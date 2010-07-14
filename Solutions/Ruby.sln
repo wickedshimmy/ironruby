@@ -29,9 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruby.ConsoleAny", "..\Langu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Scripting.Debugging", "..\Runtime\Microsoft.Scripting.Debugging\Microsoft.Scripting.Debugging.csproj", "{ED82A346-1CD9-4CB0-9C00-4CDD4CF577CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Scripting.Silverlight", "..\Hosts\SilverLight\Microsoft.Scripting.SilverLight\Microsoft.Scripting.Silverlight.csproj", "{C86A7A7B-3086-4136-9B56-17E8DCB38C8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Scripting.Silverlight", "..\Hosts\Silverlight\Microsoft.Scripting.Silverlight\Microsoft.Scripting.Silverlight.csproj", "{C86A7A7B-3086-4136-9B56-17E8DCB38C8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chiron", "..\Hosts\SilverLight\Chiron\Chiron.csproj", "{7D07B0CE-FFA3-4402-BFF2-5F42B4267D2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chiron", "..\Hosts\Silverlight\Chiron\Chiron.csproj", "{7D07B0CE-FFA3-4402-BFF2-5F42B4267D2A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{77323B06-15A2-4CF4-8A7A-86EAA2B66498} = {77323B06-15A2-4CF4-8A7A-86EAA2B66498}
 		{02FF0909-F5AD-48CF-A86A-345E721B7E40} = {02FF0909-F5AD-48CF-A86A-345E721B7E40}
