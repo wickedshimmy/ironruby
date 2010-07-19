@@ -260,7 +260,6 @@ namespace Microsoft.Scripting {
                     res.SetValue(i, CreateTupleInstance(pi.PropertyType, newStart, newEnd, args));
                 }
             } else {
-                int argCnt = tupleType.GetGenericArguments().Length;
                 for (int i = start; i < end; i++) {
                     res.SetValue(i - start, args[i]);
                 }

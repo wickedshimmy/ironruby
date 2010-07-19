@@ -258,10 +258,8 @@ namespace Microsoft.Scripting.Actions {
                 }
             }
 
-            Expression instance = null;
             if (callTargets.Count > 0) {
                 targets = callTargets.ToArray();
-                instance = Ast.Convert(self.Expression, CompilerHelpers.GetType(target));
                 return new TargetInfo(null, ArrayUtils.Insert(self, args), targets);
             }
 

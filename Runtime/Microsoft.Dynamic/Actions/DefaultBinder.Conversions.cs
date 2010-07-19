@@ -50,12 +50,12 @@ namespace Microsoft.Scripting.Actions {
             // try all the conversions - first look for conversions against the expression type,
             // these can be done w/o any additional tests.  Then look for conversions against the 
             // restricted type.
-            BindingRestrictions typeRestrictions = arg.Restrictions.Merge(BindingRestrictionsHelpers.GetRuntimeTypeRestriction(arg.Expression, arg.GetLimitType()));
+            BindingRestrictions typeRestrictions = arg.Restrictions.Merge(BindingRestrictionsHelpers.GetRuntimeTypeRestriction(arg.Expression, knownType));
 
             DynamicMetaObject res = 
                 TryConvertToObject(toType, arg.Expression.Type, arg, typeRestrictions) ??
                 TryAllConversions(resolverFactory, toType, kind, arg.Expression.Type, typeRestrictions, arg) ??
-                TryAllConversions(resolverFactory, toType, kind, arg.GetLimitType(), typeRestrictions, arg) ??
+                TryAllConversions(resolverFactory, toType, kind, knownType, typeRestrictions, arg) ??
                 errorSuggestion ??
                 MakeErrorTarget(toType, kind, typeRestrictions, arg);
 

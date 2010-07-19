@@ -866,8 +866,6 @@ namespace System.Linq.Expressions {
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         protected internal override Expression VisitUnary(UnaryExpression node) {
-            bool parenthesize = NeedsParentheses(node, node.Operand);
-
             switch (node.NodeType) {
                 case ExpressionType.Convert:
                     Out("(" + node.Type.ToString() + ")");
