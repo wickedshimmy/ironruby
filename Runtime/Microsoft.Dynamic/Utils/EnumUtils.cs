@@ -34,7 +34,7 @@ namespace Microsoft.Scripting.Utils {
                     } else if (underType == typeof(byte)) {
                         return Enum.ToObject(selfType, (byte)self | (byte)other);
                     } else if (underType == typeof(sbyte)) {
-                        return Enum.ToObject(selfType, (sbyte)self | (sbyte)other);
+                        return Enum.ToObject(selfType, (sbyte)((int)self | (int)other));
                     } else if (underType == typeof(uint)) {
                         return Enum.ToObject(selfType, (uint)self | (uint)other);
                     } else if (underType == typeof(ulong)) {
