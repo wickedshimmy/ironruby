@@ -854,7 +854,8 @@ namespace IronRuby.Tests {
                     TraceCall(i_var)
                 )
             );
-            
+            l1.Compile()();
+
             //XTraceTestLambda(l1);
 
             var e_var = Ast.Parameter(typeof(Exception), "e");
