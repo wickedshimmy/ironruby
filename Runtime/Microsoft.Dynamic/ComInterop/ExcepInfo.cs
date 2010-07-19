@@ -26,6 +26,7 @@ namespace Microsoft.Scripting.ComInterop {
     /// <summary>
     /// This is similar to ComTypes.EXCEPINFO, but lets us do our own custom marshaling
     /// </summary>
+    #pragma warning disable 414
     [StructLayout(LayoutKind.Sequential)]
     internal struct ExcepInfo {
         private short wCode;
@@ -107,6 +108,7 @@ namespace Microsoft.Scripting.ComInterop {
             return exception;
         }
     }
+    #pragma warning restore 414
 }
 
 #endif
