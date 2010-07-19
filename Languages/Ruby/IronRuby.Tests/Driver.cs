@@ -95,11 +95,9 @@ namespace IronRuby.Tests {
     }
 
     public class TestHost : ScriptHost {
-        private readonly OptionsAttribute/*!*/ _options;
         private readonly PlatformAdaptationLayer/*!*/ _pal;
 
         public TestHost(OptionsAttribute/*!*/ options) {
-            _options = options;
             _pal = options.Pal != null ?
                 (PlatformAdaptationLayer)Activator.CreateInstance(options.Pal) :
                 PlatformAdaptationLayer.Default;

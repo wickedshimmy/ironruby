@@ -1923,7 +1923,7 @@ p T::GenericSubclass1[Fixnum].new.foo(1)
                 public int Id { get { return 2; } }
             }
 
-            public class C<T, S> {
+            public new class C<T, S> {
                 public int Id { get { return 3; } }
             }
         }
@@ -2086,12 +2086,11 @@ false
                 return OnEvent(arg);
             }
         }
-        
+
         public void ClrEventImpl1() {
             // TODO: fix
             if (_driver.PartialTrust) return;
 
-            var e = new ClassWithVirtualEvent1();
             Context.ObjectClass.SetConstant("E", Context.GetClass(typeof(ClassWithVirtualEvent1)));
 
             var f = Engine.Execute<ClassWithVirtualEvent1>(@"

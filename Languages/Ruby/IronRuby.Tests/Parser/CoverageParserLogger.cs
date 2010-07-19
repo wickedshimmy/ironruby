@@ -31,13 +31,11 @@ namespace IronRuby.Tests {
     /// This way, the next time you reduce a production where the non terminal token was you have a production ID instead of 0.
     /// </summary>
     public class CoverageParserLogger : IParserLogger {
-        private readonly Parser/*!*/ _parser;
         private readonly TextWriter/*!*/ _output;
         private readonly Stack<int>/*!*/ _rules;
 
         public CoverageParserLogger(Parser/*!*/ parser, TextWriter/*!*/ output) {
             Assert.NotNull(parser, output);
-            _parser = parser;
             _output = output;
             _rules = new Stack<int>();
         }

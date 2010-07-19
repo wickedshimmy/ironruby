@@ -634,11 +634,9 @@ namespace IronRuby.Tests {
         [Options(NoRuntime = true)]
         public void MutableString_Translate1() {
             var SJIS = RubyEncoding.GetRubyEncoding(RubyEncoding.CodePageSJIS);
-            var sjis = new byte[] { 0x82, 0xA0 };
-            var u12345 = new byte[] { 0xF0, 0x92, 0x8D, 0x85 }; // \u{12345} in UTF-8
             Test_Translate(
                 Utf8("αβγδ"), RubyEncoding.UTF8,
-                Utf8("α-γ"), RubyEncoding.UTF8, 
+                Utf8("α-γ"), RubyEncoding.UTF8,
                 Utf8("AB"), SJIS,
                 Utf8("ABBδ"), RubyEncoding.UTF8
             );
@@ -688,13 +686,12 @@ namespace IronRuby.Tests {
 
             // correctly switches to char repr and invalidates hashcode:
             MutableString self, from, to, result;
-            int h0, h1, h2;
+            int h1, h2;
 
             self = MutableString.CreateBinary(Utf8("aAaBa"), RubyEncoding.UTF8);
             from = MutableString.Create("a", RubyEncoding.UTF8);
             to = MutableString.Create("α", RubyEncoding.UTF8);
             result = MutableString.Create("αAαBα", RubyEncoding.UTF8);
-            h0 = self.GetHashCode();
 
             MutableStringOps.Translate(self, from, to);
 
