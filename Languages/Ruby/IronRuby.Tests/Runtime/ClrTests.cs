@@ -3224,7 +3224,7 @@ p Inst.Double(2.0), Inst.Double(4), Inst.Double(System::Byte.new(8)), Inst.Doubl
 28
 29
 ");
-            
+
             // primitive numerics:
             TestOutput(@"
 p(*Inst.numerics(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11))
@@ -3241,7 +3241,7 @@ p(*Inst.numerics(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11))
 (10+0j)
 Convertible(11)
 ");
-                        
+
             // protocol conversions:
             TestOutput(@"
 class C
@@ -3275,7 +3275,7 @@ p(*Inst.numerics(c, c, c, c, c, c, c, c, c))
 1 (UInt64)
 1
 ");
-            
+
             // protocol conversions:
             TestOutput(@"
 a = System::Collections::ArrayList.new
@@ -3295,11 +3295,13 @@ p Inst.Foo(a) rescue p $!
             Assert(r1 == 124);
 
             // foreign meta-object conversion:
-            var py = Runtime.GetEngine("python");
-            var scope = Runtime.CreateScope();
-            py.Execute(@"def foo(x): return x + 2", scope);
-            var r2 = Engine.Execute<int>(@"Inst.delegate(foo).invoke(123)", scope);
-            Assert(r2 == 125);
+            if (_driver.RunPython) {
+                var py = Runtime.GetEngine("python");
+                var scope = Runtime.CreateScope();
+                py.Execute(@"def foo(x): return x + 2", scope);
+                var r2 = Engine.Execute<int>(@"Inst.delegate(foo).invoke(123)", scope);
+                Assert(r2 == 125);
+            }
         }
 
         #endregion
