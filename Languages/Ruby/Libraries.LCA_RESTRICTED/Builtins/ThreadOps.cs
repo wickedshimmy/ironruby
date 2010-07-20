@@ -566,8 +566,9 @@ namespace IronRuby.Builtins {
                     return RubyThreadStatus.Running;
                 }
             }
-
+#pragma warning disable 162
             throw new ArgumentException("unknown thread status: " + state);
+#pragma warning restore 162
         }
 
         [RubyMethod("status")]
