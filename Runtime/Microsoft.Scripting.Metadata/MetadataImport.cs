@@ -1100,7 +1100,6 @@ namespace Microsoft.Scripting.Metadata {
         #region Dump
 #if DEBUG
         public unsafe void Dump(TextWriter output) {
-            IntPtr imageStart = (IntPtr)_image.Pointer;
             output.WriteLine("Image:");
             output.WriteLine("  {0}", _image.Length);
             output.WriteLine();
@@ -1148,7 +1147,7 @@ namespace Microsoft.Scripting.Metadata {
             output.WriteLine("UserStringStream:        +{0:X8}", _userStringStream != null ? (_userStringStream.Pointer - _image.Pointer) : 0);
             output.WriteLine("MetadataTableStream:     +{0:X8}", _metadataTableStream.Pointer - _image.Pointer);
             //output.WriteLine("ResourceMemoryReader:    +{0:X8}", _resourceMemoryBlock != null ? (_resourceMemoryBlock.Pointer - _image.Pointer) : 0);
-            
+
             output.WriteLine();
             output.WriteLine("Misc:");
             output.WriteLine("  MetadataStreamKind     {0}", _metadataStreamKind);
