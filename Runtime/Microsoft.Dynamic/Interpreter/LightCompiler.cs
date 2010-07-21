@@ -1067,7 +1067,6 @@ namespace Microsoft.Scripting.Interpreter {
             BranchLabel end = _instructions.MakeLabel();
             BranchLabel gotoEnd = _instructions.MakeLabel();
 
-            int tryStackDepth = _instructions.CurrentStackDepth;
             int tryStart = _instructions.Count;
 
             BranchLabel startOfFinally = null;
@@ -1085,11 +1084,9 @@ namespace Microsoft.Scripting.Interpreter {
             // handlers jump here:
             _instructions.MarkLabel(gotoEnd);
             _instructions.EmitGoto(end, hasValue, hasValue);
-            
-            // keep the result on the stack:     
-            if (node.Handlers.Count > 0) {
-                int handlerContinuationDepth = _instructions.CurrentContinuationsDepth;
 
+            // keep the result on the stack:
+            if (node.Handlers.Count > 0) {
                 // TODO: emulates faults (replace by true fault support)
                 if (node.Finally == null && node.Handlers.Count == 1) {
                     var handler = node.Handlers[0];

@@ -31,7 +31,6 @@ namespace IronRuby.Tests {
         private Tokenizer _tokenizer;
         private Tokens _actualToken;
         private TokenValue _actualValue;
-        private SourceSpan _actualSpan;
         private LoggingErrorSink _log;
         private List<Tokens>/*!*/ _allTokens;
         private List<object>/*!*/ _allValues;
@@ -112,7 +111,6 @@ namespace IronRuby.Tests {
         public AssertTokenizer/*!*/ Next() {
             _actualToken = _tokenizer.GetNextToken();
             _actualValue = _tokenizer.TokenValue;
-            _actualSpan = _tokenizer.TokenSpan;
             _allTokens.Add(_actualToken);
             _allValues.Add(_actualValue);
             return this;

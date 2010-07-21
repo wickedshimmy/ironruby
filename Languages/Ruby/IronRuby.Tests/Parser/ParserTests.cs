@@ -520,32 +520,31 @@ namespace IronRuby.Tests {
         }
 
         public void ParseIntegers1() {
-            IntegerValue x;
-            Assert((x = Tokenizer.ParseInteger("", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("", 16)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("    ", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("-", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("+", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("0", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("00", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("0x", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("0x", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("-0x", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("+0x", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("  1234   ", 0)).Equals(1234));
-            Assert((x = Tokenizer.ParseInteger("  1_2_3_4   ", 0)).Equals(1234));
-            Assert((x = Tokenizer.ParseInteger("  _1234   ", 0)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("  12a34   ", 0)).Equals(12));
-            Assert((x = Tokenizer.ParseInteger("  1_2__34   ", 0)).Equals(12));
-            Assert((x = Tokenizer.ParseInteger("  -1_2", 0)).Equals(-12));
-            Assert((x = Tokenizer.ParseInteger("0x1234", 0)).Equals(0x1234));
-            Assert((x = Tokenizer.ParseInteger("0x1234", 10)).Equals(0));
-            Assert((x = Tokenizer.ParseInteger("0b102", 0)).Equals(2));
-            Assert((x = Tokenizer.ParseInteger("1000_000000_0000000000", 0)).Bignum.ToString() == "10000000000000000000");
-            Assert((x = Tokenizer.ParseInteger("1000000_000000_0000000", 16)).Bignum.ToString() == "75557863725914323419136");
-            Assert((x = Tokenizer.ParseInteger("0x1000000_000000_0000000", 0)).Bignum.ToString() == "75557863725914323419136");
-            Assert((x = Tokenizer.ParseInteger("0b1000000_000000_0000000", 0)).Equals(524288));
-            Assert((x = Tokenizer.ParseInteger("-0b1000000_000000_0000000", 0)).Equals(-524288));
+            Assert(Tokenizer.ParseInteger("", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("", 16).Equals(0));
+            Assert(Tokenizer.ParseInteger("    ", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("-", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("+", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("0", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("00", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("0x", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("0x", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("-0x", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("+0x", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("  1234   ", 0).Equals(1234));
+            Assert(Tokenizer.ParseInteger("  1_2_3_4   ", 0).Equals(1234));
+            Assert(Tokenizer.ParseInteger("  _1234   ", 0).Equals(0));
+            Assert(Tokenizer.ParseInteger("  12a34   ", 0).Equals(12));
+            Assert(Tokenizer.ParseInteger("  1_2__34   ", 0).Equals(12));
+            Assert(Tokenizer.ParseInteger("  -1_2", 0).Equals(-12));
+            Assert(Tokenizer.ParseInteger("0x1234", 0).Equals(0x1234));
+            Assert(Tokenizer.ParseInteger("0x1234", 10).Equals(0));
+            Assert(Tokenizer.ParseInteger("0b102", 0).Equals(2));
+            Assert(Tokenizer.ParseInteger("1000_000000_0000000000", 0).Bignum.ToString() == "10000000000000000000");
+            Assert(Tokenizer.ParseInteger("1000000_000000_0000000", 16).Bignum.ToString() == "75557863725914323419136");
+            Assert(Tokenizer.ParseInteger("0x1000000_000000_0000000", 0).Bignum.ToString() == "75557863725914323419136");
+            Assert(Tokenizer.ParseInteger("0b1000000_000000_0000000", 0).Equals(524288));
+            Assert(Tokenizer.ParseInteger("-0b1000000_000000_0000000", 0).Equals(-524288));
         }
 
         private void TokenizeNumbers1() {

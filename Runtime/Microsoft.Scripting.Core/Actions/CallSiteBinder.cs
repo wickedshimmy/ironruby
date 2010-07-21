@@ -166,7 +166,6 @@ namespace System.Runtime.CompilerServices {
         }
 
         private static Expression<T> Stitch<T>(Expression binding, LambdaSignature<T> signature) where T : class {
-            Type targetType = typeof(T);
             Type siteType = typeof(CallSite<T>);
 
             var body = new ReadOnlyCollectionBuilder<Expression>(3);
@@ -198,7 +197,7 @@ namespace System.Runtime.CompilerServices {
                         Expression.Invoke(
                             Expression.Property(
                                 Expression.Convert(site, siteType),
-                                typeof(CallSite<T>).GetProperty("Update")
+                                siteType.GetProperty("Update")
                             ),
                             new TrueReadOnlyCollection<Expression>(@params)
                         )

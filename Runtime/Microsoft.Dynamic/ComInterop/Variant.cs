@@ -73,11 +73,13 @@ namespace Microsoft.Scripting.ComInterop {
             internal UnionTypes _unionTypes;
         }
 
+        #pragma warning disable 169
         [StructLayout(LayoutKind.Sequential)]
         private struct Record {
             private IntPtr _record;
             private IntPtr _recordInfo;
         }
+        #pragma warning restore 169
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable")]
         [StructLayout(LayoutKind.Explicit)]

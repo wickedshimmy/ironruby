@@ -17,6 +17,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -683,7 +684,7 @@ ambiguous
         #region Extension Methods
 
         public void ClrExtensionMethods0() {
-            bool expectExact = typeof(Enumerable).Assembly.FullName == "System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+            bool expectExact = typeof(IronRuby.Builtins.Enumerable).Assembly.FullName == "System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
 
             Dictionary<string, int> expected = new Dictionary<string, int>();
             foreach (string name in new[] {
@@ -728,8 +729,8 @@ ambiguous
                 expected[name] = count + 1;
             }
 
-            var methods = ReflectionUtils.GetVisibleExtensionMethods(typeof(Enumerable).Assembly);
-            new List<MethodInfo>(ReflectionUtils.GetVisibleExtensionMethodsSlow(typeof(Enumerable).Assembly));
+            var methods = ReflectionUtils.GetVisibleExtensionMethods(typeof(IronRuby.Builtins.Enumerable).Assembly);
+            new List<MethodInfo>(ReflectionUtils.GetVisibleExtensionMethodsSlow(typeof(IronRuby.Builtins.Enumerable).Assembly));
 
             Dictionary<string, int> actual = new Dictionary<string, int>();
             foreach (MethodInfo method in methods) {
@@ -1923,7 +1924,7 @@ p T::GenericSubclass1[Fixnum].new.foo(1)
                 public int Id { get { return 2; } }
             }
 
-            public class C<T, S> {
+            public new class C<T, S> {
                 public int Id { get { return 3; } }
             }
         }
@@ -2086,12 +2087,11 @@ false
                 return OnEvent(arg);
             }
         }
-        
+
         public void ClrEventImpl1() {
             // TODO: fix
             if (_driver.PartialTrust) return;
 
-            var e = new ClassWithVirtualEvent1();
             Context.ObjectClass.SetConstant("E", Context.GetClass(typeof(ClassWithVirtualEvent1)));
 
             var f = Engine.Execute<ClassWithVirtualEvent1>(@"
@@ -3348,11 +3348,7 @@ puts a.count");
 
         public class ClassWithTypeVariance1 {
             public int Foo(IEnumerable<object> e) {
-                int i = 0;
-                foreach (var item in e) {
-                    i++;
-                }
-                return i;
+                return e.Count ();
             }
         }
 

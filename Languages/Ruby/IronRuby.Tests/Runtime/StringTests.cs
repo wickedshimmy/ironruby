@@ -260,12 +260,11 @@ SUB
             b = Context.CreateSymbolInternal(MutableString.CreateMutable("foo", RubyEncoding.KCodeUTF8));
             Assert(a.Equals(b));
         }
-        
+
         [Options(Compatibility = RubyCompatibility.Ruby186)]
         private void Inspect1() {
             const char sq = '\'';
 
-            var sjisEncoding = RubyEncoding.KCodeSJIS.StrictEncoding;
             // あ
             var sjisWide = new byte[] { 0x82, 0xa0 };
             // \u{12345} in UTF-8:

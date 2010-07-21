@@ -403,9 +403,6 @@ namespace IronRuby.Tests {
         /// </summary>
         [Options(NoRuntime = true)]
         public void Interpreter1C() {
-            var label1 = Ast.Label();
-            var label2 = Ast.Label();
-
             var inner =
                 Ast.TryFinally(
                     Ast.TryCatch(
@@ -857,7 +854,8 @@ namespace IronRuby.Tests {
                     TraceCall(i_var)
                 )
             );
-            
+            l1.Compile()();
+
             //XTraceTestLambda(l1);
 
             var e_var = Ast.Parameter(typeof(Exception), "e");
@@ -1032,7 +1030,6 @@ namespace IronRuby.Tests {
             ParameterExpression s_var = Ast.Parameter(typeof(string), "s");
             ParameterExpression s2_var = Ast.Parameter(typeof(string), "s2");
             LabelTarget break2_label = Ast.Label();
-            LabelTarget break1_label = Ast.Label();
             LabelTarget label1 = Ast.Label();
 
             var l = Expression.Lambda<Action>(
@@ -1073,7 +1070,6 @@ namespace IronRuby.Tests {
             ParameterExpression i_var = Ast.Parameter(typeof(int), "i");
             ParameterExpression k_var = Ast.Parameter(typeof(int), "k");
             ParameterExpression j_var = Ast.Parameter(typeof(int), "j");
-            ParameterExpression o_var = Ast.Parameter(typeof(object), "o");
             ParameterExpression d_var = Ast.Parameter(typeof(Func<int>), "d");
             LabelTarget label1 = Ast.Label();
             LabelTarget label2 = Ast.Label();

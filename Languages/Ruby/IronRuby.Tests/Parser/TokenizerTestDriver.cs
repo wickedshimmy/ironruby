@@ -398,17 +398,20 @@ namespace IronRuby.Tests {
                 }
             }
             tokenizeTime.Stop();
+
+            Stopwatch transformTime = new Stopwatch();
 #endif
             //var stackSizes = new Dictionary<int, int>();
 
             var options = new RubyCompilerOptions();
             Stopwatch parseTime = new Stopwatch();
-            Stopwatch transformTime = new Stopwatch();
             foreach (var source in sources) {
                 try {
                     parseTime.Start();
                     var parser = new Parser();
+#pragma warning disable 168
                     var rubyTree = parser.Parse(source, options, ErrorSink.Null);
+#pragma warning restore 168
                     //int mt;
                     //stackSizes[parser.StackMaxTop] = stackSizes.TryGetValue(parser.StackMaxTop, out mt) ? mt + 1 : 1;
                     parseTime.Stop();

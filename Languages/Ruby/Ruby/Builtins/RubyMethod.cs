@@ -136,7 +136,7 @@ namespace IronRuby.Builtins {
                 throw new NotSupportedException();
             }
 
-            private new string/*!*/ GetDebugView() {
+            private string/*!*/ GetDebugView() {
                 var result = new StringBuilder();
                 result.Append("missing ");
                 result.Append(GetTargetClass().Name);
